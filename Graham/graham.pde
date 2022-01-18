@@ -11,7 +11,6 @@ class Point():
         self.x = x
         self.y = y
         self.size = size
-        self.r = 0
         self.theta = 0
 
     def __eq__(self, other):
@@ -66,8 +65,8 @@ p0 = None
 MAX_POINTS = 500
 
 def setup():
-    randomSeed(1)
-    global points, comp, p0
+    randomSeed(123)
+    global points, p0
 
     size(800, 800)
     w2, h2 = width / 3, height / 3
@@ -117,7 +116,7 @@ def draw():
             B = PVector.sub(p1, p3)
 
             c = (A.cross(B)).z
-            if c < 0:
+            if c <= 0:
                 S.pop()
             else:
                 break
